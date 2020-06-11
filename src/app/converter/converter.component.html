@@ -1,0 +1,61 @@
+<br />
+<div class="alert alert-danger" 
+	role="alert"
+	*ngIf="hasError">
+	Erro obtendo dados. Tente novamente.
+</div>
+<div class="panel panel-success">
+	<div class="panel-heading">
+		Selecione a moeda a ser convertida
+	</div>
+	<div class="panel-body text-center">
+	  <form #converterForm="ngForm" class="form-inline">
+		<input 
+			type="text" 
+			name="value"
+			class="form-control text-right"
+			placeholder="0" 
+			[(ngModel)]="converter.value"
+			numero
+			required>
+		<select 
+			name="currencyFrom"
+			class="form-control"
+			[(ngModel)]="converter.currencyFrom"
+			required>
+			<option 
+				*ngFor="let currency of currencys" 
+				[value]="currency.symbol">
+				{{ currency.symbol }} - {{ currency.description }}
+			</option>
+		</select>
+		<span class="glyphicon glyphicon-arrow-right" 
+			aria-hidden="true"></span>
+		<select
+			name="currencyTo"
+			class="form-control"
+			[(ngModel)]="converter.currencyTo"
+			required>
+			<option 
+				*ngFor="let currency of currencys" 
+				[value]="currency.symbol">
+				{{ currency.symbol }} - {{ currency.description }}
+			</option>
+		</select>
+		<input 
+			type="submit" 
+			value="Converter"
+			class="btn btn-success"
+			data-toggle="modal" 
+			data-target="#modalCotacao"
+			(click)="convert()"
+			[disabled]="!converterForm.form.valid">
+	  </form>
+	 </div>
+	 <!-- <*-- <modal-cotacao 
+        [id]="'modalCotacao'" 
+        [conversaoResponse]="converterResponse" 
+		[conversao]="converter" 
+        (onConfirm)="init()">
+    </modal-cotacao> -->
+</div>
