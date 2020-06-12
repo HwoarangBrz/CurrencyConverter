@@ -8,7 +8,7 @@ import { Converter, ConverterResponse } from '../models';
   providedIn: 'root',
 })
 export class ConverterService {
-  private readonly BASE_URL = 'http://data.fixer.io/api/latest?access_key=988f378c08f459391577762a99261a63';
+  private readonly BASE_URL = 'http://data.fixer.io/api/latest?access_key=COLOQUEAQUIAKEYDEACESSO';
 
   constructor(private http: HttpClient) {}
 
